@@ -1,11 +1,11 @@
 # KeyboardCleaner
-KeyboardCleaner is macOS app for disabling your input devices temporarily &mdash; perfect for cleaning your keyboard without having to shut down!
+KeyboardCleaner is a macOS app for disabling your input devices temporarily &mdash; perfect for cleaning your keyboard without having to shut down!
 
 ## Usage
 Once you start KeyboardCleaner, your screen will turn blank and display a message showing that the keyboard and mouse have been disabled. To re-enable them and close KeyboardCleaner, hold down right click for one second and release.
 
 ## Accessibility Access
-If you are running KeyboardCleaner for the first time, you may need to grant it accessibility access. Usually macOS will show a system dialog with instructions to do so. If it does not, go to System Preferences > Security & Privacy > Privacy > Accessibility and grant KeyboardCleaner access.
+If you are running KeyboardCleaner for the first time, you may need to grant it accessibility access. Usually, macOS will show a system dialog with instructions to do so. If it does not, go to System Preferences > Security & Privacy > Privacy > Accessibility and grant KeyboardCleaner access.
 
 ## Malfunctions
 If KeyboardCleaner were to malfunction and prevent you from deactivating, you must force shutdown your device. This can be done on most modern MacBook laptops by holding the power button down until the screen turns black.
