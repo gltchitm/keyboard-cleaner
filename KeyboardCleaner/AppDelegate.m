@@ -52,6 +52,7 @@ CGEventRef tapCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event
     CFRelease(runLoopSource);
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    signal(SIGINT, SIG_IGN);
     [self.window orderFront:nil];
     [self.window setMinSize:self.window.frame.size];
     [self.window setMaxSize:self.window.frame.size];
