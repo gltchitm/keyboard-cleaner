@@ -16,9 +16,9 @@ KeyboardCleaner creates an event tap to disable input. If you are running softwa
 ## AutoKill
 While working on KeyboardCleaner, you should keep the AutoKill script running in the background. To do so, run:
 ```
-python3 auto-kill.py [SECONDS]
+./auto-kill.sh <limit>
 ```
-The script will check for the KeyboardCleaner process every 2 seconds and send `SIGKILL` if its running time exceeds the `[SECONDS]` argument. This is useful to avoid needing to force restart your device if you make a change that prevents you from deactivating KeyboardCleaner normally.
+The script will check for the KeyboardCleaner process every 2 seconds and send `SIGKILL` if its running time exceeds the `<limit>` argument (seconds). This is useful to avoid needing to force restart your device if you make a change that prevents you from deactivating KeyboardCleaner normally.
 
 ## Note
 This program does not automatically clean your keyboard. It only assists in the process of doing so.
