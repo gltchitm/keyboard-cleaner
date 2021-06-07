@@ -55,7 +55,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZeF-fl-JAf">
-                        <rect key="frame" x="-77" y="148" width="635" height="63"/>
+                        <rect key="frame" x="-77" y="148" width="635" height="62"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Keyboard Cleaner Activated!" id="3sc-6i-tuO">
                             <font key="font" size="50" name="TimesNewRomanPSMT"/>
@@ -72,7 +72,7 @@
                         <color key="contentTintColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeS-Nv-pgA">
-                        <rect key="frame" x="-58" y="0.0" width="597" height="27"/>
+                        <rect key="frame" x="-57" y="0.0" width="596" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Hold Right Click For 1 Second And Release To Deactivate" id="TKQ-LR-WZ7">
                             <font key="font" size="25" name="TimesNewRomanPSMT"/>
