@@ -1,15 +1,8 @@
-//
-//  AppDelegate.m
-//  KeyboardCleaner
-//
-//  Created by gltchitm on 3/1/21.
-//
-
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
 
-@property (strong) IBOutlet NSWindow *window;
+@property (strong) IBOutlet NSWindow* window;
 
 @end
 
@@ -18,7 +11,7 @@
 
 double rightClickDown;
 
-CGEventRef tapCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
+CGEventRef tapCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void* refcon) {
     double now = [[NSDate date] timeIntervalSince1970] * 1000;
     if (CGEventGetType(event) == kCGEventRightMouseDown) {
         rightClickDown = now;
@@ -37,12 +30,14 @@ CGEventRef tapCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event
         [[self.window contentView] setBackgroundColor:NSColor.whiteColor];
         [[self.window contentView] exitFullScreenModeWithOptions:nil];
         [NSCursor unhide];
-        NSAlert *alert = [[NSAlert alloc] init];
+        NSAlert* alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:@"OK"];
         [alert setMessageText:@"Cannot Create Event Tap"];
         [alert setInformativeText:@"You might have to give KeyboardCleaner accessibility access in System Preferences."];
         [alert setAlertStyle:NSAlertStyleCritical];
-        [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) { exit(1); }];
+        [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+            exit(1);
+        }];
         return;
     }
     runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
@@ -51,7 +46,7 @@ CGEventRef tapCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event
     CFRelease(eventTap);
     CFRelease(runLoopSource);
 }
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
     signal(SIGINT, SIG_IGN);
     [self.window orderFront:nil];
     [self.window setMinSize:self.window.frame.size];

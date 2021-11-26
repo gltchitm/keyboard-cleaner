@@ -24,4 +24,4 @@ The script will check for the KeyboardCleaner process every 2 seconds and send `
 This program does not automatically clean your keyboard. It only assists in the process of doing so.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](LICENSE)

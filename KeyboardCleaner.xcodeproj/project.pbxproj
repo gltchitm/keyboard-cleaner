@@ -277,7 +277,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = gl.tchitm.KeyboardCleaner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gltchitm.KeyboardCleaner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -297,7 +297,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = gl.tchitm.KeyboardCleaner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gltchitm.KeyboardCleaner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
