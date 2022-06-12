@@ -7,16 +7,13 @@ Once you start KeyboardCleaner, your screen will turn blank and display a messag
 ## Accessibility Access
 If you are running KeyboardCleaner for the first time, you may need to grant it accessibility access. Usually, macOS will show a system dialog with instructions to do so. If it does not, go to System Preferences > Security & Privacy > Privacy > Accessibility and grant KeyboardCleaner access.
 
-## Malfunctions
-If KeyboardCleaner were to malfunction and prevent you from deactivating, you must force shutdown your device. This can be done on most modern MacBook laptops by holding the power button down until the screen turns black.
-
 ## Event Taps
 KeyboardCleaner creates an event tap to disable input. If you are running software that detects (and possibly terminates) programs doing this, you might need to whitelist KeyboardCleaner.
 
 ## AutoKill
 While working on KeyboardCleaner, you should keep the AutoKill script running in the background. To do so, run:
 ```
-./auto-kill.sh <limit>
+./util/auto-kill.sh <limit>
 ```
 The script will check for the KeyboardCleaner process every 2 seconds and send `SIGKILL` if its running time exceeds the `<limit>` argument (seconds). This is useful to avoid needing to force restart your device if you make a change that prevents you from deactivating KeyboardCleaner normally.
 

@@ -2,8 +2,8 @@
 
 print_usage() {
     echo "USAGE:"
-    echo "  ./auto-kill.sh <limit>\n"
-    echo "<limit> - Seconds to wait before killing KeyboardCleaner (number)"
+    echo "  $0 <limit>\n"
+    echo "<limit> - Seconds to wait before killing Keyboard Cleaner"
 }
 
 get_uptime() {
@@ -21,19 +21,20 @@ if ! [[ $1 =~ ^[0-9]+$ ]]; then
 fi
 
 while true; do
-    pid=$(pgrep KeyboardCleaner)
+    pid=$(pgrep keyboard-cleaner)
 
     if [ "$pid" = "" ]; then
-        echo "KeyboardCleaner is not open!"
+        echo "Keyboard Cleaner is not open!"
     else
         uptime=$(get_uptime $pid)
 
         if [ $uptime -gt $1 ]; then
             kill -9 $pid
-            echo "Killed KeyboardCleaner for exceeding the time limit!"
+            echo "Killed Keyboard Cleaner for exceeding the time limit!"
         else
-            echo "KeyboardCleaner is open but has not reached the time limit..."
+            echo "Keyboard Cleaner is open but has not reached the time limit..."
         fi
     fi
+
     sleep 2
 done
