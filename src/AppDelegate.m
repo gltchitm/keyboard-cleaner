@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import <ApplicationServices/ApplicationServices.h>
 
 @implementation AppDelegate
 
@@ -70,21 +71,54 @@ CGEventRef tapCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event
     return nil;
 }
 
+-(void)configureWindowForAlert {
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    [self.window setBackgroundColor:[NSColor whiteColor]];
+    [self.window setHasShadow:TRUE];
+    [self.window setLevel:NSFloatingWindowLevel];
+    [self.window setContentSize:NSMakeSize(500, 500)];
+    [self.window setStyleMask:NSWindowStyleMaskTitled];
+    [self.window setCollectionBehavior:NSWindowCollectionBehaviorDefault];
+    [self.window center];
+    [NSCursor unhide];
+}
+
+-(BOOL)ensureAccessibilityPermission {
+    NSDictionary* options = @{(__bridge NSString*)kAXTrustedCheckOptionPrompt : @YES};
+    if (AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options)) {
+        return YES;
+    }
+
+    [self configureWindowForAlert];
+
+    NSAlert* alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Open Settings"];
+    [alert addButtonWithTitle:@"Quit"];
+    [alert setMessageText:@"Accessibility Access Needed"];
+    [alert setInformativeText:@"Keyboard Cleaner needs Accessibility access to disable your keyboard and mouse.\n\nAdd Keyboard Cleaner to System Settings ▸ Privacy & Security ▸ Accessibility, then relaunch the app."];
+    [alert setAlertStyle:NSAlertStyleCritical];
+    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            NSURL* settingsURL = [NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"];
+            [[NSWorkspace sharedWorkspace] openURL:settingsURL];
+        }
+        [[NSApplication sharedApplication] terminate:nil];
+    }];
+
+    return NO;
+}
+
 -(void)tap {
+    if (![self ensureAccessibilityPermission]) {
+        return;
+    }
+
     CGEventMask mask = kCGEventMaskForAllEvents;
     CFMachPortRef eventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap,
         kCGEventTapOptionDefault, mask, tapCallback, NULL);
 
     if (!eventTap) {
-        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-        [self.window setBackgroundColor:[NSColor whiteColor]];
-        [self.window setHasShadow:TRUE];
-        [self.window setLevel:NSFloatingWindowLevel];
-        [self.window setContentSize:NSMakeSize(500, 500)];
-        [self.window setStyleMask:NSWindowStyleMaskTitled];
-        [self.window setCollectionBehavior:NSWindowCollectionBehaviorDefault];
-        [self.window center];
-        [NSCursor unhide];
+        [self configureWindowForAlert];
 
         NSAlert* alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:@"OK"];
